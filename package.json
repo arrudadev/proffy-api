@@ -5,13 +5,15 @@
   "author": "Alexandre Monteiro <alexandre.monteiro.bec@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts --transpile-only --ignore-watch node_modules --respawn"
+    "dev": "ts-node-dev src/server.ts --transpile-only --ignore-watch node_modules --respawn",
+    "knex:migrate:latest": "knex --knexfile knexfile.ts migrate:latest",
+    "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "knext": "^0.1.0",
+    "knex": "^0.21.1",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
