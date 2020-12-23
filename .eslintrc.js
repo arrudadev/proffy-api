@@ -50,5 +50,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     camelcase: 'off',
     'func-names': 'off',
+    'no-console': 'off',
   },
 };
