@@ -20,4 +20,14 @@ export class ConnectionsController {
       });
     }
   }
+
+  async index(request: Request, response: Response): Promise<Response> {
+    const totalConnections = await connection('connections').count(
+      '* as total',
+    );
+
+    const { total } = totalConnections[0];
+
+    return response.json({ total });
+  }
 }
