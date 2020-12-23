@@ -10,6 +10,7 @@ routes.get('/', (request: Request, response: Response) => {
   return response.send('Proffy API on!');
 });
 
+routes.get('/classes', classesControllers.index);
 routes.post('/classes', classesControllers.create);
 
 export { routes };

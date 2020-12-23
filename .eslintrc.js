@@ -49,5 +49,6 @@ module.exports = {
     'max-len': 'off',
     'import/prefer-default-export': 'off',
     camelcase: 'off',
+    'func-names': 'off',
   },
 };
