@@ -129,4 +129,61 @@ describe('ClassesController', () => {
     expect(class_schedule_week_day_3.from).toBe(480);
     expect(class_schedule_week_day_3.to).toBe(720);
   });
+
+  it('should be able to list classes that been in the filter', async () => {
+    await createNewClass();
+
+    const response = await supertest(app).get('/classes').query({
+      subject: proffy.subject,
+      week_day: proffy.schedule[0].week_day,
+      time: proffy.schedule[0].from,
+    });
+
+    const classes = response.body;
+
+    expect(classes[0]).toHaveProperty('name');
+    expect(classes[0]).toHaveProperty('avatar');
+    expect(classes[0]).toHaveProperty('whatsapp');
+    expect(classes[0]).toHaveProperty('bio');
+    expect(classes[0]).toHaveProperty('subject');
+    expect(classes[0]).toHaveProperty('cost');
+    expect(classes[0]).toHaveProperty('user_id');
+    expect(classes[0]).toHaveProperty('id');
+  });
+
+  it('should return an error when the subject filter are missing', async () => {
+    await createNewClass();
+
+    const response = await supertest(app).get('/classes').query({
+      week_day: proffy.schedule[0].week_day,
+      time: proffy.schedule[0].from,
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should return an error when the week_day filter are missing', async () => {
+    await createNewClass();
+
+    const response = await supertest(app).get('/classes').query({
+      subject: proffy.subject,
+      time: proffy.schedule[0].from,
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should return an error when the time filter are missing', async () => {
+    await createNewClass();
+
+    const response = await supertest(app).get('/classes').query({
+      subject: proffy.subject,
+      week_day: proffy.schedule[0].week_day,
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
 });
