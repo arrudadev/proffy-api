@@ -54,7 +54,7 @@ export class ClassesController {
 
       await trx.commit();
 
-      return response.status(201).send();
+      return response.status(201).json({ user_id });
     } catch (error) {
       await trx.rollback();
 
