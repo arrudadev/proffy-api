@@ -51,4 +51,13 @@ describe('ConnectionsController', () => {
 
     expect(response.status).toBe(201);
   });
+
+  it('should return error when not send user_id in request to create a new connection', async () => {
+    const response = await supertest(app)
+      .post('/connections')
+      .send({ wrong_parameter: 145646 });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
 });

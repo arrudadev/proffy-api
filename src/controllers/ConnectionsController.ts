@@ -13,8 +13,6 @@ export class ConnectionsController {
 
       return response.status(201).send();
     } catch (error) {
-      console.error(error);
-
       return response.status(400).json({
         error: 'Unexpected error while creating new connection',
       });
