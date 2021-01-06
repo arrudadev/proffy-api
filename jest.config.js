@@ -3,6 +3,12 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{js,ts}'],
+  coveragePathIgnorePatterns: [
+    'src/database',
+    'src/app.ts',
+    'src/routes.ts',
+    'src/server.ts',
+  ],
   coverageReporters: ['json', 'lcov'],
   globals: {
     'ts-jest': {

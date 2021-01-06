@@ -130,6 +130,58 @@ describe('ClassesController', () => {
     expect(class_schedule_week_day_3.to).toBe(720);
   });
 
+  it('should return an error when the proffy name are missing while create a new class', async () => {
+    const proffyWithoutName: any = { ...proffy };
+
+    delete proffyWithoutName.name;
+
+    const response = await supertest(app)
+      .post('/classes')
+      .send(proffyWithoutName);
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should return an error when the proffy avatar are missing while create a new class', async () => {
+    const proffyWithoutAvatar: any = { ...proffy };
+
+    delete proffyWithoutAvatar.avatar;
+
+    const response = await supertest(app)
+      .post('/classes')
+      .send(proffyWithoutAvatar);
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should return an error when the proffy whatsapp are missing while create a new class', async () => {
+    const proffyWithoutWhatsapp: any = { ...proffy };
+
+    delete proffyWithoutWhatsapp.whatsapp;
+
+    const response = await supertest(app)
+      .post('/classes')
+      .send(proffyWithoutWhatsapp);
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
+  it('should return an error when the proffy bio are missing while create a new class', async () => {
+    const proffyWithoutBio: any = { ...proffy };
+
+    delete proffyWithoutBio.bio;
+
+    const response = await supertest(app)
+      .post('/classes')
+      .send(proffyWithoutBio);
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('error');
+  });
+
   it('should be able to list classes that been in the filter', async () => {
     await createNewClass();
 

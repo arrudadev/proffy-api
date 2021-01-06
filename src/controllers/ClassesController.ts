@@ -56,8 +56,6 @@ export class ClassesController {
 
       return response.status(201).send();
     } catch (error) {
-      console.error(error);
-
       await trx.rollback();
 
       return response.status(400).json({
