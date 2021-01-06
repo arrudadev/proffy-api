@@ -60,4 +60,16 @@ describe('ConnectionsController', () => {
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('error');
   });
+
+  it('should be able to list the total of connections', async () => {
+    await supertest(app).post('/connections').send({ user_id });
+
+    await supertest(app).post('/connections').send({ user_id });
+
+    await supertest(app).post('/connections').send({ user_id });
+
+    const response = await supertest(app).get('/connections');
+
+    expect(response.body.total).toBe(3);
+  });
 });
