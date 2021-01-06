@@ -9,7 +9,9 @@
 > A REST API responsible for provide data to the [`web`](https://github.com/monteiro-alexandre/proffy-web) and [`mobile`](https://github.com/monteiro-alexandre/proffy-mobile) front-ends.
 
 <div align="left">
-  
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Proffy%20API&uri=https%3A%2F%2Fgithub.com%2Fmonteiro-alexandre%2Fproffy-api%2Fblob%2Fmaster%2FInsomnia-workspace.json)
+
 ![build](https://github.com/monteiro-alexandre/proffy-api/workflows/build/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/monteiro-alexandre/proffy-api/branch/master/graph/badge.svg?token=750YPG0FRR)](https://codecov.io/gh/monteiro-alexandre/proffy-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
